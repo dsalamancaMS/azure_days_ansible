@@ -47,7 +47,6 @@
             access: Allow
             priority: 1001
             direction: Inbound
-
     - name: Create a load balancer
       azure_rm_loadbalancer:
         name: "{{ vmss_name }}lb"
@@ -67,7 +66,6 @@
         natpool_frontend_port_end: 50040
         natpool_backend_port: 22
         natpool_protocol: Tcp
-
     - name: Create VMSS
       azure_rm_virtualmachinescaleset:
         resource_group: "{{ resource_group }}"
