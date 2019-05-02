@@ -66,33 +66,3 @@
         natpool_frontend_port_end: 50040
         natpool_backend_port: 22
         natpool_protocol: Tcp
-    - name: Create VMSS
-      azure_rm_virtualmachinescaleset:
-        resource_group: "{{ resource_group }}"
-        name: "{{ vmss_name }}"
-        vm_size: Standard_DS1_v2
-        admin_username: "{{ admin_username }}"
-        admin_password: "{{ admin_password }}"
-        ssh_password_enabled: true
-        capacity: 2
-        virtual_network_name: "{{ vmss_name }}"
-        subnet_name: "{{ vmss_name }}"
-        upgrade_policy: Manual
-        tier: Standard
-        managed_disk_type: Standard_LRS
-        os_disk_caching: ReadWrite
-        image:
-          offer: UbuntuServer
-          publisher: Canonical
-          sku: 16.04-LTS
-          version: latest
-        load_balancer: "{{ vmss_name }}lb"
-        data_disks:
-          - lun: 0
-            disk_size_gb: 20
-            managed_disk_type: Standard_LRS
-            caching: ReadOnly
-          - lun: 1
-            disk_size_gb: 30
-            managed_disk_type: Standard_LRS
-            caching: ReadOnly
