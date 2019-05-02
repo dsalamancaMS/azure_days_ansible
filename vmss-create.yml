@@ -58,6 +58,8 @@
         natpool_frontend_port_end: 50040
         natpool_backend_port: 22
         natpool_protocol: Tcp
+        
+    - name: vmsscreate
       azure_rm_virtualmachinescaleset:
         resource_group: "{{ resource_group }}"
         name: "{{ vmss_name }}"
